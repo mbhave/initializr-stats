@@ -1,0 +1,178 @@
+initializr:
+  stats:
+    generator:
+      datasets:
+        - range:
+            from: 2014-01-01
+            to: 2018-12-31
+          data:
+            monday: 2000
+            tuesday: 3000
+            wednesday: 3000
+            thursday: 4000
+            friday: 1500
+            saturday: 700
+            sunday: 300
+        - range:
+            from: 2019-01-01
+            to: 2019-03-31
+          data:
+            monday: 15000
+            tuesday: 17000
+            wednesday: 17000
+            thursday: 22000
+            friday: 15000
+            saturday: 9000
+            sunday: 7000
+        - range:
+            from: 2019-04-01
+            to: 2019-06-30
+          data:
+            monday: 35000
+            tuesday: 37000
+            wednesday: 37000
+            thursday: 42000
+            friday: 35000
+            saturday: 17000
+            sunday: 15000
+        - range:
+            from: 2019-07-01
+            to: 2019-09-30
+          data:
+            monday: 37000
+            tuesday: 39000
+            wednesday: 39000
+            thursday: 42000
+            friday: 37000
+            saturday: 18000
+            sunday: 16000
+        - range:
+            from: 2019-10-01
+            to: 2019-12-31
+          data:
+            monday: 39000
+            tuesday: 42000
+            wednesday: 42000
+            thursday: 45000
+            friday: 39000
+            saturday: 18000
+            sunday: 16000
+        - range:
+            from: 2020-01-01
+            to: 2020-12-31
+          data:
+            monday: 40000
+            tuesday: 44000
+            wednesday: 44000
+            thursday: 47000
+            friday: 41000
+            saturday: 20000
+            sunday: 19000
+      releases:
+          - range:
+              from: 2018-01-01
+              to: 2018-02-28
+            data:
+              maintenance: 1.4.x
+              current: 1.5.x
+              next: 2.0.x
+          - range:
+              from: 2018-03-01
+              to: 2018-05-08
+            data:
+              maintenance: 1.5.x
+              current: 2.0.x
+          - range:
+              from: 2018-05-09
+              to: 2018-10-29
+            data:
+              maintenance: 1.5.x
+              current: 2.0.x
+              next: 2.1.x
+          - range:
+              from: 2018-10-30
+              to: 2019-10-15
+            data:
+              maintenance: 1.5.x
+              current: 2.1.x
+              next: 2.2.x
+          - range:
+              from: 2019-10-16
+              to: 2020-05-01
+            data:
+              maintenance: 2.1.x
+              current: 2.2.x
+              next: 2.3.x
+      events:
+        - name: "Spring Boot 2.0.0.RELEASE"
+          date: 2018-03-01
+          type: release
+        - name: "Spring Boot 2.0.1.RELEASE"
+          date: 2018-04-05
+          type: release
+        - name: "Spring Boot 1.5.12.RELEASE"
+          date: 2018-04-10
+          type: release
+        - name: "Spring Boot 1.5.13.RELEASE"
+          date: 2018-05-09
+          type: release
+        - name: "Spring Boot 2.0.2.RELEASE"
+          date: 2018-05-09
+          type: release
+        - name: "Spring Boot 1.5.14.RELEASE"
+          date: 2018-06-14
+          type: release
+        - name: "Spring Boot 2.0.3.RELEASE"
+          date: 2018-06-14
+          type: release
+        - name: "Spring Boot 1.5.15.RELEASE"
+          date: 2018-07-31
+          type: release
+        - name: "Spring Boot 2.0.4.RELEASE"
+          date: 2018-07-31
+          type: release
+        - name: "Spring Boot 2.1.0.M1"
+          date: 2018-07-31
+          type: release
+        - name: "Spring Boot 2.1.0.M2"
+          date: 2018-08-21
+          type: release
+        - name: "Spring Boot 2.1.0.M3"
+          date: 2018-09-13
+          type: release
+        - name: "Spring Boot 2.1.0.M4"
+          date: 2018-09-25
+          type: release
+        - name: "Spring Boot 2.1.0.RC1"
+          date: 2018-10-17
+          type: release
+        - name: "Spring Boot 2.1.0.RELEASE"
+          date: 2018-10-30
+          type: release
+        - name: "SpringOne Platform"
+          date: 2019-10-07
+          type: conference
+        - name: "Spring Boot 2.2.0.RELEASE"
+          date: 2019-10-16
+          type: release
+        - name: "Slack Down"
+          date: 2020-02-24
+          type: tools_outage
+        - name: "Confoo"
+          date: 2020-02-26
+          type: conference
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      application: initializr-stats-generator
+
+server:
+  port: 8081
+
+spring:
+  mvc:
+    date-format: yyyy-MM-dd
