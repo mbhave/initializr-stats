@@ -4,6 +4,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.spring.sample.dashboard.stats.support.ReverseLookupDescriptor;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import reactor.core.publisher.Mono;
 
 import org.springframework.stereotype.Component;
@@ -16,18 +18,22 @@ public class ReverseLookupClient {
 
 	private final WebClient client;
 
+	private static final Log LOGGER = LogFactory.getLog(ReverseLookupClient.class);
+
 	public ReverseLookupClient(WebClient.Builder builder, MeterRegistry registry) {
 		this.client = builder.filter(rateLimitRemainingMetric(registry)).build();
 	}
 
 	public Mono<ReverseLookupDescriptor> freeReverseLookup(String ip) {
 		return this.client.get().uri("http://localhost:8081/reverse-lookup/free/{ip}", ip)
-				.retrieve().bodyToMono(ReverseLookupDescriptor.class);
+				.retrieve().bodyToMono(ReverseLookupDescriptor.class).doOnNext((d) ->
+						LOGGER.debug("Free reverse lookup service called."));
 	}
 
 	public Mono<ReverseLookupDescriptor> payingReverseLookup(String ip) {
 		return this.client.get().uri("http://localhost:8081/reverse-lookup/costly/{ip}", ip)
-				.retrieve().bodyToMono(ReverseLookupDescriptor.class);
+				.retrieve().bodyToMono(ReverseLookupDescriptor.class).doOnNext((d) ->
+						LOGGER.debug("Paid reverse lookup service called."));
 	}
 
 	private ExchangeFilterFunction rateLimitRemainingMetric(MeterRegistry registry) {

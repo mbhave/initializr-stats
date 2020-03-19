@@ -18,7 +18,7 @@ public class DashboardProperties {
 		/**
 		 * Read timeout for the IP resolver API.
 		 */
-		private Duration timeout = Duration.ofMillis(500);
+		private Duration timeout = Duration.ofSeconds(10);
 
 		public Duration getTimeout() {
 			return timeout;

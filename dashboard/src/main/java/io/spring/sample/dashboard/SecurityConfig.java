@@ -24,7 +24,8 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 				.anyRequest().authenticated()
 				.and().formLogin().loginPage("/login").permitAll()
-				.and().httpBasic();
+				.and().httpBasic()
+				.and().csrf().ignoringRequestMatchers(EndpointRequest.toAnyEndpoint());
 	}
 
 	@Bean

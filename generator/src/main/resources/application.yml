@@ -152,15 +152,9 @@ initializr:
         - name: "SpringOne Platform"
           date: 2019-10-07
           type: conference
-        - name: "Spring Boot 2.2.0.RELEASE"
-          date: 2019-10-16
-          type: release
-        - name: "Slack Down"
-          date: 2020-02-24
-          type: tools_outage
-        - name: "Confoo"
-          date: 2020-02-26
-          type: conference
+        - name: "Twitter down"
+          date: 2020-03-16
+          type: social_outage
 management:
   endpoints:
     web:
